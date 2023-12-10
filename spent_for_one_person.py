@@ -5,11 +5,9 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('users_with_population.csv')
 # Группировка данных по городам и вычисление общей суммы потраченных денег на игры в каждом городе
 total_spent_by_city = df.groupby('city_nm')['good_price'].sum()
-print(total_spent_by_city)
 
 # Получение численности населения городов
 city_population = df.groupby('city_nm')['city_population'].max()
-print(city_population)
 
 # Расчет суммы на душу населения
 spent_per_capita = total_spent_by_city / city_population
