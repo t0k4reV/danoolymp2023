@@ -14,7 +14,7 @@ avg_spent_per_customer = total_spent_per_customer.groupby('city_nm').mean()
 print(avg_spent_per_customer)
 # Построение графика
 plt.figure(figsize=(10, 6))
-avg_spent_per_customer.sort_values().plot(kind='bar', color='greengit')
+avg_spent_per_customer.sort_values().plot(kind='bar', color='green')
 plt.title('Средний чек на один заказ в каждом городе')
 plt.xlabel('Город')
 plt.ylabel('Средний чек на 1 заказ')
