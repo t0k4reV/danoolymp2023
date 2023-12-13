@@ -12,7 +12,7 @@ city_population = df.groupby('city_nm')['city_population'].max()
 # Расчет суммы на душу населения
 spent_per_capita = total_spent_by_city / city_population
 
-#Построение графика
+# Построение графика
 plt.figure(figsize=(10, 6))
 spent_per_capita.sort_values().plot(kind='bar', color='skyblue')
 plt.title('Средняя сумма потраченных денег на игры на душу населения в каждом городе')
