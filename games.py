@@ -21,7 +21,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-dd = pd.read_csv('T_games_dataset.csv')
+dd = pd.read_csv('sources/T_games_dataset.csv')
 mask = ['Xbox подписка', 'Бестселлеры', 'Карты оплаты', "Предзаказы", 'Скидки', 'Классика от Deep Silver', 'Новинки']
 
 df = dd[~dd['category_name'].isin(mask)]

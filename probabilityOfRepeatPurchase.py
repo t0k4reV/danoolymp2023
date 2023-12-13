@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('T_games_dataset.csv')
+data = pd.read_csv('sources/T_games_dataset.csv')
 # mask = ['Xbox подписка', 'Бестселлеры', 'Карты оплаты', "Предзаказы", 'Скидки', 'Классика от Deep Silver', 'Новинки']
 
 
