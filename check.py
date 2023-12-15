@@ -1,11 +1,6 @@
 import pandas as pd
 
+data = pd.read_csv('dataset.csv')
 
-fdata = pd.read_csv('filtered_user_orders.csv')
-
-data = pd.read_csv('user_and_orders.csv')
-
-
-print(fdata.count())
-
-print(data.count())
+unique_rows_total = len(data.drop_duplicates())
+print("Общее количество уникальных строк в DataFrame:", unique_rows_total)

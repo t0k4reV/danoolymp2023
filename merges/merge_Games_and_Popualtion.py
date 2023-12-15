@@ -27,4 +27,4 @@ population_data = {
 users_data['city_population'] = users_data['city_nm'].map(population_data)
 
 # Сохранение результата в новый файл CSV
-users_data.to_csv('users_with_population.csv', index=False)
+users_data.to_csv('dataset.csv', index=False)

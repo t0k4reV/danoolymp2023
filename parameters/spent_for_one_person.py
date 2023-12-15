@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Предположим, что у вас есть DataFrame с данными, давайте назовем его df
-df = pd.read_csv('../users_with_population.csv')
+df = pd.read_csv('../dataset.csv')
 # Группировка данных по городам и вычисление общей суммы потраченных денег на игры в каждом городе
 total_spent_by_city = df.groupby('city_nm')['good_price'].sum()
 

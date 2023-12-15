@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('../users_with_population.csv')
+df = pd.read_csv('../dataset.csv')
 # Группируем данные по клиентам и городам, вычисляем общую количество заказов для каждого клиента в каждом городе
 total_orders = df.groupby(['client_id', 'city_nm'])['good_cnt'].count()
 
