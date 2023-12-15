@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Загрузка данных из нового файла
-client_spending_with_city = pd.read_csv('../client_spending_filtered.csv')
+client_spending_with_city = pd.read_csv('../sources/client_spending_filtered.csv')
 
 # Создание боксплота
 plt.figure(figsize=(10, 6))

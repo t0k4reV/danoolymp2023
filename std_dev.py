@@ -4,7 +4,7 @@ import pandas as pd
 total_data = pd.read_csv('dataset.csv')  # Замените на путь к вашему общему датафрейму
 
 # Загрузка отфильтрованного датафрейма с ранее исключенными клиентами
-excluded_clients = pd.read_csv('client_spending_filtered.csv')  # Замените на путь к вашему фильтрованному датафрейму
+excluded_clients = pd.read_csv('sources/client_spending_filtered.csv')  # Замените на путь к вашему фильтрованному датафрейму
 
 # Получение списка исключенных ID клиентов
 excluded_ids = excluded_clients['client_id'].tolist()
