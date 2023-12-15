@@ -7,22 +7,20 @@ df = pd.read_csv('../users_with_population.csv')
 df['total_order_amount'] = df['good_price'] * df['good_cnt']
 
 # Группируем данные по клиентам и городам, вычисляем общую сумму заказов для каждого клиента в каждом городе
-total_spent_per_customer = df.groupby(['id', 'city_nm'])['total_order_amount'].sum()
+total_spent_per_customer = df.groupby(['client_id', 'city_nm'])['total_order_amount'].sum()
 
 # Получаем средний чек на одного покупателя в каждом городе
-avg_spent_per_order = total_spent_per_customer.groupby('city_nm').mean()
-print(avg_spent_per_order)
+avg_spent_per_customer = total_spent_per_customer.groupby('city_nm').median()
+print(avg_spent_per_customer)
 # Построение графика
 plt.figure(figsize=(10, 6))
-avg_spent_per_order.sort_values().plot(kind='bar', color='green')
-plt.title('Средний чек на один заказ в каждом городе')
+avg_spent_per_customer.sort_values().plot(kind='bar', color='salmon')
+plt.title('Средний чек на одного покупателя в каждом городе')
 plt.xlabel('Город')
-plt.ylabel('Средний чек на 1 заказ')
+plt.ylabel('Средний чек на одного покупателя')
 plt.xticks(rotation=90)
 plt.tight_layout()
 plt.show()
-
-# Создание словаря для хранения данных о численности населения городов
 
 # city_coordinates = {
 #     'Москва': '55.755829, 37.617627',
@@ -45,11 +43,10 @@ plt.show()
 # ### Здесь мы создаем новую таблицу, которая содержит только информацию о городе, его координатах  и показателя avg_spent_per_customer ###
 # # Создание нового DataFrame с данными для сохранения в CSV
 # new_df = pd.DataFrame({
-#     'Город': avg_spent_per_order.index,  # Названия городов из индекса avg_spent_per_customer
-#     'Координаты': [city_coordinates[city] for city in avg_spent_per_order.index],  # Координаты из словаря city_coordinates
-#     'Средний_чек_на_1_заказ': avg_spent_per_order.values  # Параметр avg_spent_per_customer
+#     'Город': avg_spent_per_customer.index,  # Названия городов из индекса avg_spent_per_customer
+#     'Координаты': [city_coordinates[city] for city in avg_spent_per_customer.index],  # Координаты из словаря city_coordinates
+#     'Среднее количество денег, потраченных пользователем': avg_spent_per_customer.values  # Параметр avg_spent_per_customer
 # })
 #
 # # Сохранение нового DataFrame в CSV файл
-# new_df.to_csv('avg_spent_per_order_coordinates.csv', index=False)
-#
+# new_df.to_csv('avg_spent_per_customer_coordinates.csv', index=False)
