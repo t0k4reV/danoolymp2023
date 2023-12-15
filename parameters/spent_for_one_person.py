@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Предположим, что у вас есть DataFrame с данными, давайте назовем его df
-df = pd.read_csv('../dataset.csv')
+df = pd.read_csv('../filtered_total_data.csv')
 # Группировка данных по городам и вычисление общей суммы потраченных денег на игры в каждом городе
 total_spent_by_city = df.groupby('city_nm')['good_price'].sum()
 
@@ -14,7 +14,7 @@ spent_per_capita = total_spent_by_city / city_population
 
 # Построение графика
 plt.figure(figsize=(10, 6))
-spent_per_capita.sort_values().plot(kind='bar', color='skyblue')
+spent_per_capita.sort_values().plot(kind='bar', color='gold')
 plt.title('Средняя сумма потраченных денег на игры на душу населения в каждом городе')
 plt.xlabel('Город')
 plt.ylabel('Средняя сумма потраченных денег на игры на душу населения')

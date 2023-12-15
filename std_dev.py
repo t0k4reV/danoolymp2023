@@ -1,23 +1,16 @@
 import pandas as pd
 
-# Предполагаем, что ваш DataFrame называется df
-df = pd.read_csv('dataset.csv')
-# Группировка данных по 'Client_id' и подсчет количества заказов для каждого клиента
-user_orders = df.groupby('client_id')['id'].count().reset_index()
+# Загрузка общего датафрейма
+total_data = pd.read_csv('dataset.csv')  # Замените на путь к вашему общему датафрейму
 
-# Вычисление стандартного отклонения количества заказов
-std_dev = user_orders['id'].std()
+# Загрузка отфильтрованного датафрейма с ранее исключенными клиентами
+excluded_clients = pd.read_csv('client_spending_filtered.csv')  # Замените на путь к вашему фильтрованному датафрейму
 
-# Определение порога для фильтрации (например, 2 стандартных отклонения от среднего)
-threshold = 2 * std_dev
+# Получение списка исключенных ID клиентов
+excluded_ids = excluded_clients['client_id'].tolist()
 
-# Вычисление среднего количества заказов
-mean_orders = user_orders['id'].mean()
+# Исключение строк с исключенными клиентами из общего датафрейма
+filtered_total_data = total_data[~total_data['client_id'].isin(excluded_ids)]
 
-# Фильтрация пользователей по стандартному отклонению их заказов
-outlier_users = user_orders[user_orders['id'] > (mean_orders + threshold)]
-
-# Фильтрация основного датасета, исключая пользователей-выбросы
-filtered_df = df[~df['client_id'].isin(outlier_users['client_id'])]
-
-filtered_df.to_csv('fdataset.csv', index=False)
+# Сохранение отфильтрованных данных в новый CSV файл
+filtered_total_data.to_csv('filtered_total_data.csv', index=False)
