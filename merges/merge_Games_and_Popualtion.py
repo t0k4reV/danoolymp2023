@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Загрузка данных из CSV файла с пользователями
-users_data = pd.read_csv('sources/T_games_dataset.csv')
+users_data = pd.read_csv('../sources/T_games_dataset.csv')
 
 # Создание словаря для хранения данных о численности населения городов
 population_data = {
