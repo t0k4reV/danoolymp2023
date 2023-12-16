@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Загрузка данных из CSV файла с пользователями
-spent_data = pd.read_csv('../spent_per_capita.csv')
+spent_data = pd.read_csv('spent_per_capita.csv')
 
 # Создание словаря для хранения данных о численности населения городов
 city_coordinates = {

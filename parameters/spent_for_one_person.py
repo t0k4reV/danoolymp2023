@@ -22,7 +22,7 @@ plt.xticks(rotation=90)
 plt.tight_layout()
 plt.show()
 
-## Тут мы создаем отдельную таблицу с результатом
+# ## Тут мы создаем отдельную таблицу с результатом
 # print(spent_per_capita)
 # spent_per_capita.to_csv('spent_per_capita.csv')
 
