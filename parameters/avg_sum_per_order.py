@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 # Предположим, что у вас есть DataFrame с данными, давайте назовем его df
 df = pd.read_csv('../dataset.csv')
+cities_parameters = pd.read_csv('cities_pp_sc.csv')
 # Рассчитываем общую сумму каждого заказа
 df['total_order_amount'] = df['good_price'] * df['good_cnt']
 
@@ -12,15 +13,15 @@ total_spent_per_customer = df.groupby(['id', 'city_nm'])['total_order_amount'].s
 # Получаем средний чек на одного покупателя в каждом городе
 avg_spent_per_order = total_spent_per_customer.groupby('city_nm').mean()
 print(avg_spent_per_order)
-# Построение графика
-plt.figure(figsize=(10, 6))
-avg_spent_per_order.sort_values().plot(kind='bar', color='green')
-plt.title('Средний чек на один заказ в каждом городе')
-plt.xlabel('Город')
-plt.ylabel('Средний чек на 1 заказ')
-plt.xticks(rotation=90)
-plt.tight_layout()
-plt.show()
+# # Построение графика
+# plt.figure(figsize=(10, 6))
+# avg_spent_per_order.sort_values().plot(kind='bar', color='green')
+# plt.title('Средний чек на один заказ в каждом городе')
+# plt.xlabel('Город')
+# plt.ylabel('Средний чек на 1 заказ')
+# plt.xticks(rotation=90)
+# plt.tight_layout()
+# plt.show()
 
 # Создание словаря для хранения данных о численности населения городов
 
@@ -53,3 +54,6 @@ plt.show()
 # # Сохранение нового DataFrame в CSV файл
 # new_df.to_csv('avg_spent_per_order_coordinates.csv', index=False)
 #
+
+cities_parameters['avg_sum_per_order'] = cities_parameters['city_nm'].map(avg_spent_per_order)
+cities_parameters.to_csv('cities_pp_sc_so.csv', index=False)

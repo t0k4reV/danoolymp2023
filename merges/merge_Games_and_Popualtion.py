@@ -2,6 +2,7 @@ import pandas as pd
 
 # Загрузка данных из CSV файла с пользователями
 users_data = pd.read_csv('../sources/T_games_dataset.csv')
+cities_parameters = pd.read_csv('../parameters/cities_parameters.csv')
 
 # Создание словаря для хранения данных о численности населения городов
 population_data = {
@@ -24,7 +25,10 @@ population_data = {
 }
 
 # Добавление столбца с численностью населения в файл с пользователями
-users_data['city_population'] = users_data['city_nm'].map(population_data)
+# users_data['city_population'] = users_data['city_nm'].map(population_data)
+cities_parameters['city_population '] = cities_parameters['city_nm'].map(population_data)
 
 # Сохранение результата в новый файл CSV
-users_data.to_csv('dataset.csv', index=False)
+# users_data.to_csv('dataset.csv', index=False)
+cities_parameters.to_csv('cities_pop.csv', index=False)
+

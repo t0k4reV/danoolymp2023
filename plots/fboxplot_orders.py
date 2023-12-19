@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Загрузка данных
 # Предполагаем, что данные хранятся в файле 'data.csv'
-data = pd.read_csv('../fdataset.csv')
+data = pd.read_csv('../sources/fdataset.csv')
 
 # Группировка данных по городам и количеству заказов пользователя
 city_user_orders = data.groupby(['city_nm', 'client_id']).size().reset_index(name='order_count')

@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv('../dataset.csv')
+
+cities_parameters = pd.read_csv('cities_pp_sc_so.csv')
+
 # Группируем данные по клиентам и городам, вычисляем общую количество заказов для каждого клиента в каждом городе
 total_orders = df.groupby(['client_id', 'city_nm'])['good_cnt'].count()
 
@@ -43,6 +46,9 @@ new_df = pd.DataFrame({
     'Координаты': [city_coordinates[city] for city in avg_orders_per_user.index],  # Координаты из словаря city_coordinates
     'Среднее количество заказов на пользователя': avg_orders_per_user.values  # Параметр avg_spent_per_customer
 })
+
+cities_parameters['avg_orders_per_user'] = cities_parameters['city_nm'].map(avg_orders_per_user)
+cities_parameters.to_csv('cities_pp_sc_so_ou.csv', index=False)
 
 # Сохранение нового DataFrame в CSV файл
 new_df.to_csv('avg_orders_per_customer_coordinates.csv', index=False)

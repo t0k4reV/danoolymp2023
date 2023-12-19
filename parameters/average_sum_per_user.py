@@ -43,10 +43,11 @@ city_coordinates = {
 # ### Здесь мы создаем новую таблицу, которая содержит только информацию о городе, его координатах  и показателя avg_spent_per_customer ###
 #Создание нового DataFrame с данными для сохранения в CSV
 new_df = pd.DataFrame({
-    'Город': avg_spent_per_customer.index,  # Названия городов из индекса avg_spent_per_customer
-    'Координаты': [city_coordinates[city] for city in avg_spent_per_customer.index],  # Координаты из словаря city_coordinates
-    'Среднее количество денег, потраченных пользователем': avg_spent_per_customer.values  # Параметр avg_spent_per_customer
+    'city_nm': avg_spent_per_customer.index,  # Названия городов из индекса avg_spent_per_customer
+    'coordinates': [city_coordinates[city] for city in avg_spent_per_customer.index],  # Координаты из словаря city_coordinates
+    'avg_sum_per_user': avg_spent_per_customer.values  # Параметр avg_spent_per_customer
 })
 
 #Сохранение нового DataFrame в CSV файл
-new_df.to_csv('avg_spent_per_customer_coordinates.csv', index=False)
+# new_df.to_csv('avg_spent_per_customer_coordinates.csv', index=False)
+new_df.to_csv('cities_parameters.csv', index=False)
