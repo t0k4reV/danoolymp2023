@@ -1,7 +1,6 @@
 import pandas as pd
 
 # Загрузка данных
-# Замените 'file.csv' на имя вашего файла с данными
 df = pd.read_csv('dataset.csv')
 
 # Оставить только одну строку для каждого client_id
